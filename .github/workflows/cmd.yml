@@ -39,3 +39,15 @@ jobs:
           install: false
           start: npm run start
           browser: ${{ matrix.browser }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: cypress-videos-${{ matrix.browser }}
+          path: cypress/videos
+          retention-days: 7
+          if: always()
+      - uses: actions/upload-artifact@v7
+        with:
+          name: cypress-screenshots-${{ matrix.browser }}
+          path: cypress/screenshots
+          retention-days: 7
+          if: failure()
