@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: "20"
       - run: npm install
-      - run: npm e2e:headless
+      - run: npm run e2e:headless
