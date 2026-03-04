@@ -35,4 +35,4 @@ jobs:
         with:
           install: false
           start: npm start
-          browser: edge
+          browser: ${{ matrix.browser }}
