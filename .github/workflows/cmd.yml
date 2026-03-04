@@ -29,7 +29,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           path: |
             node_modules
+            .next
       - uses: actions/checkout@v6
       - uses: cypress-io/github-action@v7
         with:
+          install: false
+          start: npm start
           browser: ${{ matrix.browser }}
