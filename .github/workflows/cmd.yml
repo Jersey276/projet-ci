@@ -16,9 +16,10 @@ jobs:
     needs: build
     strategy:
       matrix:
-        browser: [edge, firefox]
+        browser: [edge, chrome]
     steps:
       - uses: actions/checkout@v6
       - uses: cypress-io/github-action@v7
         with:
+          start: npm start
           browser: ${{ matrix.browser }}
