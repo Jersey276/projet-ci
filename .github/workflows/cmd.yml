@@ -24,13 +24,13 @@ jobs:
       matrix:
         browser: [edge, chrome]
     steps:
+      - uses: actions/checkout@v6
       - uses: actions/cache/restore@v5
         with:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           path: |
             node_modules
             .next
-      - uses: actions/checkout@v6
       - uses: cypress-io/github-action@v7
         with:
           install: false
