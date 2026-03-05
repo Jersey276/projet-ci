@@ -59,7 +59,7 @@ jobs:
       - name: remote_ssh_commands
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ vars.SSH_HOST }}
-          username: ${{ vars.SSH_USER }}
-          password: ${{ vars.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
           script: whoami
