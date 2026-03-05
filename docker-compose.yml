@@ -1,5 +1,6 @@
 services:
   next:
+    container_name: next
     build:
       context: .
     ports:
