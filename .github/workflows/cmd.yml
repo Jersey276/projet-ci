@@ -57,9 +57,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: remote_ssh_commands
-        uses: Sithi5/remote-ssh-commands-action@1.1.2
+        uses: appleboy/ssh-action@v1
         with:
-          SSH_USER: ${{ vars.SSH_USER }}
-          SSH_PRIVATE_KEY: ${{ vars.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ vars.SSH_HOST }}
-          SSH_REMOTE_COMMANDS: whoiam
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
