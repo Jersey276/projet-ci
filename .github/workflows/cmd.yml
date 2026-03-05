@@ -62,5 +62,4 @@ jobs:
           SSH_USER: ${{ vars.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ vars.SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ vars.SSH_HOST }}
-          SSH_REMOTE_COMMANDS: |
-            whoiam
+          SSH_REMOTE_COMMANDS: whoiam
