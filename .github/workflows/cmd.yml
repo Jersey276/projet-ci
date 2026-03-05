@@ -61,5 +61,10 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: whoami
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd projet-ci
+            git pull
+            npm install
+            npm run build
+            pm2 restart npm
