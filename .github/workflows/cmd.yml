@@ -13,7 +13,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ github.actor }}/test-ci:latest
+          tags: ghrc.io/${{ github.actor }}/test-ci:latest
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
