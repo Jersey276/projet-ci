@@ -8,20 +8,22 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v6
-      - name: downcase REPO
+      - name: Prepare image tag
+        id: prep-image
         run: |
-          echo "REPO=${GITHUB_REPOSITORY,,}" >>${vars.REPO}
+          echo "tag=ghcr.io/${GITHUB_REPOSITORY,,}:latest" >> "$GITHUB_OUTPUT"
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ghrc.io/${{ vars.REPO }}:latest
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          tags: ${{ steps.prep-image.outputs.tag }}
   build:
     runs-on: ubuntu-latest
     steps:
