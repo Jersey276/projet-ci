@@ -1,0 +1,11 @@
+services:
+  next:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    environment:
+      - APP_ENV=development
+    command: ["npm", "run", "dev"]
